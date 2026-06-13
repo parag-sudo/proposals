@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Meta — Proposal by Think To Share</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100%; }
+:root {
+  --bg:        #f4f4f8;
+  --card:      #ffffff;
+  --dark:      #08091a;
+  --dark2:     #0d0f24;
+  --violet:    #6c47ff;
+  --violet2:   #4f2fe8;
+  --violet-lt: #ede8ff;
+  --violet-pale: #f7f5ff;
+  --orange:    #ff6b35;
+  --orange2:   #e85520;
+  --orange-lt: #fff1ec;
+  --text:      #0c0e1a;
+  --muted:     #5a5d80;
+  --border:    #e0ddf5;
+  --gold:      #ffb300;
+  --green:     #00c853;
+  --red:       #ff3d57;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4,h5 { font-family: 'Outfit', sans-serif; line-height: 1.15; }
+p { font-size: 15px; color: var(--muted); }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+section { overflow: hidden; }
+.label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.30em;
+  text-transform: uppercase; color: var(--violet); margin-bottom: 14px;
+}
+.label.light { color: rgba(108,71,255,0.7); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 94vh;
+  display: flex; align-items: center;
+  background: var(--dark);
+  overflow: hidden; padding: 80px 0;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(108,71,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,71,255,0.05) 1px, transparent 1px);
+  background-size: 64px 64px; pointer-events: none;
+}
+.hero-glow {
+  position: absolute; top: -200px; right: -150px;
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(108,71,255,0.10) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute; bottom: -250px; left: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,107,53,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-watermark {
+  position: absolute;
+  font-family: 'Outfit', sans-serif; font-weight: 900;
+  font-size: clamp(160px, 20vw, 300px);
+  color: rgba(255,255,255,0.02);
+  right: -20px; top: 50%; transform: translateY(-50%);
+  line-height: 1; pointer-events: none; user-select: none; letter-spacing: -0.05em;
+}
+.hero-content { position: relative; z-index: 2; max-width: 760px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(108,71,255,0.12); border: 1px solid rgba(108,71,255,0.28);
+  border-radius: 40px; padding: 6px 18px; margin-bottom: 32px;
+}
+.hero-badge span {
+  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #a78bfa;
+}
+.pulse-dot { width: 7px; height: 7px; background: var(--violet); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+.hero h1 {
+  font-size: clamp(44px, 5.5vw, 80px); font-weight: 900;
+  color: #fff; margin-bottom: 20px; letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.hero h1 .v { color: var(--violet); }
+.hero h1 .o { color: var(--orange); }
+.hero-sub {
+  font-size: 18px; color: rgba(255,255,255,0.48);
+  max-width: 560px; line-height: 1.75; margin-bottom: 48px;
+}
+.hero-line { width: 70px; height: 3px; background: linear-gradient(90deg, var(--violet), var(--orange)); margin: 28px 0; border-radius: 2px; }
+.hero-meta {
+  display: flex; gap: 40px; flex-wrap: wrap; margin-top: 52px;
+  border-top: 1px solid rgba(255,255,255,0.07); padding-top: 40px;
+}
+.hero-meta-item { }
+.hero-meta-item .key {
+  font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.28);
+  margin-bottom: 4px;
+}
+.hero-meta-item .val {
+  font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
+}
+.hero-meta-item .val.accent { color: var(--orange); }
+.hero-meta-item .val.vio { color: #a78bfa; }
+.hero-right {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 38%; display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+}
+.phone-mock {
+  width: 240px; height: 480px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 36px; padding: 20px 16px;
+  display: flex; flex-direction: column; gap: 10px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.phone-mock::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 24px; background: #08091a;
+  border-radius: 0 0 16px 16px;
+}
+.pm-header {
+  margin-top: 18px;
+  background: linear-gradient(135deg, rgba(108,71,255,0.4), rgba(255,107,53,0.2));
+  border-radius: 14px; padding: 14px 12px;
+  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; color: #fff;
+  text-align: center; letter-spacing: 0.05em;
+}
+.pm-question {
+  background: rgba(108,71,255,0.15); border: 1px solid rgba(108,71,255,0.25);
+  border-radius: 12px; padding: 10px 12px;
+}
+.pm-question .q-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #a78bfa; margin-bottom: 5px;
+}
+.pm-question .q-text { font-size: 11px; color: rgba(255,255,255,0.8); line-height: 1.4; }
+.pm-answers { display: flex; flex-direction: column; gap: 6px; }
+.pm-ans {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px; padding: 7px 10px;
+  font-size: 10px; color: rgba(255,255,255,0.5);
+  transition: all 0.2s;
+}
+.pm-ans.selected {
+  background: rgba(108,71,255,0.2); border-color: rgba(108,71,255,0.5);
+  color: #c4b5fd;
+}
+.pm-progress {
+  margin-top: auto;
+  background: rgba(255,255,255,0.06); border-radius: 99px; height: 4px; overflow: hidden;
+}
+.pm-progress-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--violet), var(--orange));
+  width: 45%;
+}
+.pm-step { font-size: 9px; color: rgba(255,255,255,0.3); text-align: center; margin-top: 4px; }
+
+/* ── SECTION HEADERS ── */
+.section-head { margin-bottom: 56px; }
+.section-head h2 { font-size: clamp(28px, 3.8vw, 46px); font-weight: 800; color: var(--text); margin-bottom: 14px; }
+.section-head p { font-size: 16px; max-width: 540px; }
+.vio-line { width: 56px; height: 3px; background: linear-gradient(90deg, var(--violet), var(--orange)); margin: 18px 0; border-radius: 2px; }
+
+/* ── PROBLEMS ── */
+.problems { padding: 100px 0; background: #fff; }
+.problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.problem-card {
+  background: #fff8f6; border: 1px solid #ffddd2;
+  border-radius: 16px; padding: 28px; position: relative;
+  border-top: 4px solid var(--orange);
+}
+.p-icon {
+  width: 46px; height: 46px; background: var(--orange-lt); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 18px;
+}
+.problem-card h4 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.problem-card p { font-size: 14px; }
+
+/* ── SOLUTION ── */
+.solution { padding: 100px 0; background: var(--dark2); position: relative; overflow: hidden; }
+.solution::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(108,71,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,71,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px; pointer-events: none;
+}
+.solution .section-head h2 { color: #fff; }
+.solution .section-head p { color: rgba(255,255,255,0.45); }
+.sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; position: relative; z-index: 1; }
+.sol-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 28px;
+}
+.sol-card .s-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 16px;
+  background: linear-gradient(135deg, rgba(108,71,255,0.3), rgba(255,107,53,0.15));
+}
+.sol-card h4 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.sol-card p { font-size: 14px; color: rgba(255,255,255,0.45); }
+
+/* ── SCOPE ── */
+.scope { padding: 100px 0; background: var(--bg); }
+.scope-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.scope-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.scope-card:hover { box-shadow: 0 8px 32px rgba(108,71,255,0.10); border-color: rgba(108,71,255,0.25); }
+.scope-card-header {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 22px;
+  padding-bottom: 20px; border-bottom: 1px solid var(--border);
+}
+.scope-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--violet-lt); display: flex; align-items: center;
+  justify-content: center; font-size: 24px; flex-shrink: 0;
+}
+.scope-card-header h4 { font-size: 18px; font-weight: 700; color: var(--text); }
+.scope-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.scope-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--muted);
+}
+.scope-list li::before {
+  content: '✓'; font-size: 12px; font-weight: 700; color: var(--violet);
+  background: var(--violet-lt); border-radius: 50%;
+  width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.out-of-scope { margin-top: 40px; }
+.oos-card {
+  background: #fff8f7; border: 1px solid #ffd5c9;
+  border-radius: 16px; padding: 28px;
+}
+.oos-card h4 { font-size: 16px; font-weight: 700; color: var(--orange2); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.oos-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.oos-list li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: var(--muted);
+}
+.oos-list li::before {
+  content: '✗'; font-size: 12px; font-weight: 700; color: var(--orange);
+  width: 20px; height: 20px; background: var(--orange-lt);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; flex-shrink: 0;
+}
+
+/* ── FLOW ── */
+.flow-section { padding: 100px 0; background: #fff; }
+.flow-wrap {
+  display: flex; gap: 0; align-items: stretch;
+  overflow-x: auto; padding-bottom: 12px;
+}
+.flow-step {
+  flex: 1; min-width: 170px;
+  border: 1px solid var(--border);
+  border-right: none; padding: 28px 20px;
+  background: var(--card); position: relative;
+}
+.flow-step:first-child { border-radius: 16px 0 0 16px; }
+.flow-step:last-child { border-radius: 0 16px 16px 0; border-right: 1px solid var(--border); }
+.flow-step::after {
+  content: '→'; position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+  font-size: 18px; color: var(--violet); z-index: 2; background: #fff;
+  padding: 4px 2px; border-radius: 4px;
+}
+.flow-step:last-child::after { display: none; }
+.flow-num {
+  font-family: 'Outfit', sans-serif; font-size: 38px; font-weight: 900;
+  color: var(--violet-lt); line-height: 1; margin-bottom: 12px; letter-spacing: -0.02em;
+}
+.flow-step h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.flow-step p { font-size: 13px; color: var(--muted); }
+.flow-tag {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 3px 9px; border-radius: 99px; margin-top: 10px;
+}
+.tag-v { background: var(--violet-lt); color: var(--violet2); }
+.tag-o { background: var(--orange-lt); color: var(--orange2); }
+
+/* ── TECH STACK ── */
+.tech { padding: 100px 0; background: var(--dark); position: relative; overflow: hidden; }
+.tech::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(108,71,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,71,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px; pointer-events: none;
+}
+.tech .section-head h2 { color: #fff; }
+.tech .section-head p { color: rgba(255,255,255,0.45); }
+.tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; position: relative; z-index: 1; }
+.tech-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 22px 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.tech-icon { font-size: 28px; flex-shrink: 0; }
+.tech-card .t-layer {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.28); margin-bottom: 3px;
+}
+.tech-card .t-name { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700; color: #fff; }
+.tech-card .t-desc { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+/* ── PHASES ── */
+.phases { padding: 100px 0; background: var(--bg); }
+.phases-wrap { display: flex; flex-direction: column; gap: 16px; }
+.phase-row {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px 28px;
+  display: grid; grid-template-columns: 160px 1fr 120px auto;
+  align-items: center; gap: 24px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.phase-row:hover { box-shadow: 0 4px 20px rgba(108,71,255,0.08); border-color: rgba(108,71,255,0.2); }
+.phase-label {
+  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--violet);
+}
+.phase-row h4 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.phase-row p { font-size: 13px; color: var(--muted); }
+.phase-dur {
+  font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700;
+  color: var(--violet2); text-align: center;
+}
+.phase-wks {
+  font-size: 11px; color: var(--muted); text-align: center; margin-top: 2px;
+}
+.phase-bar { width: 100%; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; grid-column: 1/-1; }
+.phase-bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--violet), var(--orange)); }
+.phases-total {
+  background: linear-gradient(135deg, var(--dark), var(--dark2));
+  border-radius: 16px; padding: 28px 32px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+  margin-top: 8px;
+}
+.phases-total h3 { font-size: 22px; font-weight: 800; color: #fff; }
+.phases-total .tot-dur { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 900; color: var(--orange); }
+.phases-total p { color: rgba(255,255,255,0.4); font-size: 14px; }
+
+/* ── 4-WEEK SPRINT PLAN ── */
+.sprint-notice {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: var(--violet-pale); border: 1px solid var(--border);
+  border-left: 4px solid var(--violet);
+  border-radius: 14px; padding: 18px 22px; margin-bottom: 40px;
+}
+.sprint-notice p { font-size: 14px; margin: 0; }
+.sprint-timeline {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; margin-bottom: 32px; background: var(--card);
+  border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+}
+.sprint-tl-item {
+  padding: 14px 18px; border-right: 1px solid var(--border);
+  position: relative;
+}
+.sprint-tl-item:last-child { border-right: none; }
+.sprint-tl-item .wk-label {
+  font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+}
+.sprint-tl-item .wk-title { font-size: 13px; font-weight: 700; color: var(--text); }
+.sprint-tl-bar { height: 4px; border-radius: 0 0 0 0; margin-top: 10px; }
+.bar-w1 { background: var(--violet); }
+.bar-w2 { background: linear-gradient(90deg, var(--violet), #9f6bff); }
+.bar-w3 { background: linear-gradient(90deg, #9f6bff, var(--orange)); }
+.bar-w4 { background: var(--orange); }
+.sprint-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 780px) { .sprint-grid { grid-template-columns: 1fr; } .sprint-timeline { grid-template-columns: 1fr 1fr; } }
+.sprint-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+}
+.sprint-card-head {
+  padding: 24px 26px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+}
+.sprint-wk-num {
+  font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 900;
+  line-height: 1; color: var(--border);
+}
+.sprint-card-head-right { flex: 1; }
+.sprint-card-head-right .wk-tag {
+  font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 99px; margin-bottom: 7px; display: inline-block;
+}
+.tag-w1 { background: var(--violet-lt); color: var(--violet2); }
+.tag-w2 { background: #ede0ff; color: #6b21d4; }
+.tag-w3 { background: #fff0e8; color: #c24a1a; }
+.tag-w4 { background: var(--orange-lt); color: var(--orange2); }
+.sprint-card-head-right h4 { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+.sprint-card-head-right p { font-size: 13px; color: var(--muted); }
+.sprint-days { padding: 20px 26px; display: flex; flex-direction: column; gap: 12px; }
+.sprint-day { display: flex; gap: 12px; align-items: flex-start; }
+.day-label {
+  font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--violet);
+  background: var(--violet-lt); border-radius: 6px; padding: 3px 8px;
+  white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+}
+.day-label.orange { color: var(--orange2); background: var(--orange-lt); }
+.day-label.purple { color: #6b21d4; background: #ede0ff; }
+.sprint-day-tasks { display: flex; flex-direction: column; gap: 4px; }
+.sprint-day-tasks span { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.sprint-deliverable {
+  margin: 0 16px 16px; background: var(--bg);
+  border-radius: 10px; padding: 12px 14px;
+  display: flex; align-items: center; gap: 9px;
+}
+.sprint-deliverable .del-icon { font-size: 16px; flex-shrink: 0; }
+.sprint-deliverable p { font-size: 12px; font-weight: 600; color: var(--text); margin: 0; }
+.sprint-total-bar {
+  background: linear-gradient(135deg, var(--dark), #140d2e);
+  border-radius: 16px; padding: 28px 32px; margin-top: 8px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+}
+.sprint-total-bar h3 { font-size: 20px; font-weight: 800; color: #fff; }
+.sprint-total-bar p { color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 2px; }
+.sprint-dur { font-family: 'Outfit', sans-serif; font-size: 42px; font-weight: 900; color: var(--orange); line-height: 1; }
+.sprint-dur-label { font-size: 14px; color: rgba(255,255,255,0.35); }
+
+/* ── DELIVERABLES ── */
+.deliverables { padding: 100px 0; background: #fff; }
+.del-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.del-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 26px;
+  border-left: 4px solid var(--violet);
+}
+.del-num {
+  font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 900;
+  color: var(--violet-lt); line-height: 1; margin-bottom: 10px;
+}
+.del-card h4 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.del-card p { font-size: 13px; }
+
+/* ── COMMERCIAL ── */
+.commercial { padding: 100px 0; background: var(--bg); }
+.comm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 700px) { .comm-grid { grid-template-columns: 1fr; } }
+
+/* ── PACKAGES ── */
+.pkg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 780px) { .pkg-grid { grid-template-columns: 1fr; } }
+.pkg-card {
+  border-radius: 24px; padding: 40px; position: relative; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.pkg-card.pkg-basic {
+  background: var(--card);
+}
+.pkg-card.pkg-full {
+  background: linear-gradient(145deg, var(--dark) 0%, #140d2e 60%, #1a0d12 100%);
+  border-color: rgba(108,71,255,0.35);
+}
+.pkg-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  border-radius: 99px; padding: 5px 14px; margin-bottom: 24px;
+  font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.badge-basic { background: var(--orange-lt); color: var(--orange2); border: 1px solid #ffd0bc; }
+.badge-full { background: rgba(108,71,255,0.15); color: #a78bfa; border: 1px solid rgba(108,71,255,0.3); }
+.pkg-card h3 { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+.pkg-card.pkg-basic h3 { color: var(--text); }
+.pkg-card.pkg-full h3 { color: #fff; }
+.pkg-tagline { font-size: 14px; margin-bottom: 28px; }
+.pkg-card.pkg-basic .pkg-tagline { color: var(--muted); }
+.pkg-card.pkg-full .pkg-tagline { color: rgba(255,255,255,0.45); }
+.pkg-price {
+  font-family: 'Outfit', sans-serif; font-weight: 900;
+  font-size: 56px; line-height: 1; margin-bottom: 6px;
+}
+.pkg-card.pkg-basic .pkg-price { color: var(--orange); }
+.pkg-card.pkg-full .pkg-price { color: #a78bfa; }
+.pkg-price-note { font-size: 13px; margin-bottom: 28px; }
+.pkg-card.pkg-basic .pkg-price-note { color: var(--muted); }
+.pkg-card.pkg-full .pkg-price-note { color: rgba(255,255,255,0.35); }
+.pkg-divider { height: 1px; margin: 24px 0; }
+.pkg-card.pkg-basic .pkg-divider { background: var(--border); }
+.pkg-card.pkg-full .pkg-divider { background: rgba(255,255,255,0.08); }
+.pkg-section-label {
+  font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px;
+}
+.pkg-card.pkg-basic .pkg-section-label { color: var(--violet); }
+.pkg-card.pkg-full .pkg-section-label { color: rgba(108,71,255,0.7); }
+.pkg-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.pkg-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
+.pkg-card.pkg-basic .pkg-features li { color: var(--muted); }
+.pkg-card.pkg-full .pkg-features li { color: rgba(255,255,255,0.6); }
+.pkg-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+.check-basic { background: var(--orange-lt); color: var(--orange2); }
+.check-full { background: rgba(108,71,255,0.2); color: #a78bfa; }
+.pkg-add {
+  background: rgba(255,107,53,0.08); border: 1px solid rgba(255,107,53,0.2);
+  border-radius: 12px; padding: 16px 18px; margin-top: 20px;
+}
+.pkg-add.add-full {
+  background: rgba(108,71,255,0.08); border-color: rgba(108,71,255,0.2);
+}
+.pkg-add p { font-size: 13px; }
+.pkg-card.pkg-basic .pkg-add p { color: var(--muted); }
+.pkg-card.pkg-full .pkg-add p { color: rgba(255,255,255,0.4); }
+.pkg-popular {
+  position: absolute; top: 24px; right: 24px;
+  background: linear-gradient(135deg, var(--violet), var(--orange));
+  color: #fff; font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 99px;
+}
+.pkg-compare {
+  margin-top: 40px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+}
+.pkg-compare table { width: 100%; border-collapse: collapse; }
+.pkg-compare th {
+  padding: 16px 20px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700;
+  text-align: left; background: var(--bg); border-bottom: 1px solid var(--border);
+}
+.pkg-compare th:not(:first-child) { text-align: center; }
+.pkg-compare td {
+  padding: 13px 20px; font-size: 13px; color: var(--muted);
+  border-bottom: 1px solid var(--border); vertical-align: middle;
+}
+.pkg-compare tr:last-child td { border-bottom: none; }
+.pkg-compare td:not(:first-child) { text-align: center; }
+.pkg-compare td:first-child { color: var(--text); font-weight: 500; }
+.chk-y { color: var(--green); font-size: 16px; font-weight: 700; }
+.chk-n { color: #ddd; font-size: 16px; }
+.chk-p { color: var(--violet); font-size: 12px; font-weight: 700; }
+.comm-addon {
+  margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+@media (max-width: 600px) { .comm-addon { grid-template-columns: 1fr; } }
+.comm-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 36px;
+}
+.comm-card.highlight {
+  background: linear-gradient(135deg, var(--dark), #140d2e);
+  border-color: rgba(108,71,255,0.3);
+}
+.comm-card.highlight h3 { color: #fff; }
+.price-display {
+  font-family: 'Outfit', sans-serif; font-weight: 900; line-height: 1;
+  margin: 20px 0;
+}
+.price-display .from { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.4); display: block; margin-bottom: 6px; }
+.price-display .amount { font-size: 52px; color: var(--orange); }
+.price-display .sep { font-size: 32px; color: rgba(255,255,255,0.2); margin: 0 8px; }
+.price-display .amount2 { font-size: 52px; color: #a78bfa; }
+.price-display .lakh { font-size: 18px; color: rgba(255,255,255,0.4); }
+.price-cap {
+  background: rgba(255,107,53,0.12); border: 1px solid rgba(255,107,53,0.25);
+  border-radius: 10px; padding: 10px 14px; margin-top: 16px;
+  font-size: 13px; color: #ffa07a; font-weight: 600;
+}
+.equity-badge {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+  background: rgba(108,71,255,0.15); border: 1px solid rgba(108,71,255,0.3);
+  border-radius: 99px; padding: 6px 16px;
+  font-size: 12px; font-weight: 700; color: #a78bfa; letter-spacing: 0.05em;
+}
+.comm-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+.comm-table tr { border-bottom: 1px solid var(--border); }
+.comm-table tr:last-child { border-bottom: none; }
+.comm-table td { padding: 12px 0; font-size: 14px; vertical-align: top; }
+.comm-table td:first-child { color: var(--muted); width: 45%; }
+.comm-table td:last-child { font-weight: 600; color: var(--text); }
+.comm-card.highlight .comm-table tr { border-bottom-color: rgba(255,255,255,0.08); }
+.comm-card.highlight .comm-table td:first-child { color: rgba(255,255,255,0.35); }
+.comm-card.highlight .comm-table td:last-child { color: rgba(255,255,255,0.85); }
+
+/* ── ROLES ── */
+.roles { padding: 100px 0; background: #fff; }
+.roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 700px) { .roles-grid { grid-template-columns: 1fr; } }
+.role-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px;
+}
+.role-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+}
+.role-avatar {
+  width: 52px; height: 52px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center; font-size: 26px;
+}
+.role-avatar.tts { background: var(--violet-lt); }
+.role-avatar.client { background: var(--orange-lt); }
+.role-card h4 { font-size: 18px; font-weight: 700; color: var(--text); }
+.role-card .role-sub { font-size: 13px; color: var(--muted); }
+.role-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.role-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); }
+.role-list li .dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 7px;
+}
+.tts-dot { background: var(--violet); }
+.client-dot { background: var(--orange); }
+
+/* ── ASSUMPTIONS ── */
+.assumptions { padding: 80px 0; background: var(--bg); }
+.assum-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.assum-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px 24px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.assum-num {
+  font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 900;
+  color: var(--border); line-height: 1; flex-shrink: 0;
+}
+.assum-item p { font-size: 14px; margin-top: 0; }
+
+/* ── NDA CTA ── */
+.nda-cta {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--dark) 0%, #140d2e 50%, #1a0d0d 100%);
+  position: relative; overflow: hidden;
+}
+.nda-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(108,71,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,71,255,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.nda-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(108,71,255,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.nda-inner { position: relative; z-index: 1; text-align: center; }
+.nda-inner h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 900; color: #fff; margin-bottom: 16px; }
+.nda-inner p { font-size: 16px; color: rgba(255,255,255,0.45); max-width: 520px; margin: 0 auto 36px; }
+.nda-steps {
+  display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px;
+}
+.nda-step {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 20px 24px; min-width: 160px;
+}
+.nda-step .ns-num {
+  font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 900; color: var(--violet);
+  margin-bottom: 6px;
+}
+.nda-step p { font-size: 13px; color: rgba(255,255,255,0.45); text-align: center; }
+.btn-primary {
+  display: inline-block; padding: 16px 40px;
+  background: linear-gradient(135deg, var(--violet), var(--violet2));
+  color: #fff; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 700;
+  border-radius: 99px; text-decoration: none; letter-spacing: 0.03em;
+  box-shadow: 0 8px 32px rgba(108,71,255,0.35);
+  border: none; cursor: pointer;
+}
+.btn-secondary {
+  display: inline-block; padding: 15px 32px;
+  background: transparent; color: rgba(255,255,255,0.7);
+  font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 600;
+  border-radius: 99px; text-decoration: none; letter-spacing: 0.03em;
+  border: 1px solid rgba(255,255,255,0.15); margin-left: 16px;
+}
+.btn-wrap { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--dark); padding: 40px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.footer-brand {
+  font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800;
+  color: #fff;
+}
+.footer-brand span { color: var(--violet); }
+.footer-meta { font-size: 13px; color: rgba(255,255,255,0.25); text-align: right; }
+.confidential {
+  background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2);
+  border-radius: 8px; padding: 6px 14px;
+  font-size: 11px; font-weight: 700; color: var(--orange);
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-right { display: none; }
+  .hero-content { max-width: 100%; }
+  .phase-row { grid-template-columns: 1fr 1fr; }
+  .phase-bar { grid-column: 1/-1; }
+}
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .phase-row { grid-template-columns: 1fr; }
+  .hero { min-height: auto; padding: 60px 0 80px; }
+  .flow-step { min-width: 140px; padding: 20px 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-watermark">META</div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="pulse-dot"></div>
+        <span>Statement of Work &nbsp;·&nbsp; v1.0 Draft</span>
+      </div>
+      <h1>Sales<span class="v">Meta</span><span class="o">.</span></h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">A multi-tenant, mobile-first sales coaching application that guides field salespeople through structured, procedural conversations — live, offline, and without AI overhead.</p>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="key">Prepared For</div>
+          <div class="val">Rakesh — Dottedline</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="key">Prepared By</div>
+          <div class="val vio">Think To Share</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="key">Date</div>
+          <div class="val">June 2026</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="key">Project Budget</div>
+          <div class="val accent">₹1.5L – ₹2L</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="key">Timeline</div>
+          <div class="val">4–10 Weeks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phone mockup -->
+  <div class="hero-right">
+    <div class="phone-mock">
+      <div class="pm-header">📋 &nbsp;Sales Meta &nbsp;·&nbsp; Cold Call</div>
+      <div class="pm-question">
+        <div class="q-label">Situation · Q2</div>
+        <div class="q-text">What's the biggest challenge your sales team faces today?</div>
+      </div>
+      <div class="pm-answers">
+        <div class="pm-ans">No structured process</div>
+        <div class="pm-ans selected">✓ Reverts to price talk</div>
+        <div class="pm-ans">Poor follow-up</div>
+        <div class="pm-ans">Team motivation</div>
+        <div class="pm-ans">No reporting</div>
+      </div>
+      <div class="pm-progress"><div class="pm-progress-fill"></div></div>
+      <div class="pm-step">Meeting Progress · Stage 2 of 4</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ PROBLEMS -->
+<section class="problems">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">The Problem</div>
+      <h2>Why Sales Training Fails at the Point of Application</h2>
+      <div class="vio-line"></div>
+      <p>Salespeople learn theory, but have no tool to guide behaviour in live client interactions. The result is consistent and costly.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="p-icon">🔄</div>
+        <h4>Habit Reversion Under Pressure</h4>
+        <p>Without real-time guidance, salespeople abandon training the moment a live call gets uncomfortable and default to old patterns.</p>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">🎯</div>
+        <h4>Bias-Driven Assessment</h4>
+        <p>Instead of structured discovery, salespeople make gut-feel judgements — leading to missed opportunities and wrong qualification signals.</p>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">💰</div>
+        <h4>Premature Price Negotiation</h4>
+        <p>Conversations drift to "what's your discount?" before value is established, destroying deal quality and margin.</p>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">📋</div>
+        <h4>Absent or Inaccurate Reporting</h4>
+        <p>Salespeople hate daily reports. Managers get fabricated summaries. Meeting intelligence is lost — especially when reps leave.</p>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">💸</div>
+        <h4>CRM Tools Are Too Expensive</h4>
+        <p>Salesforce costs ₹3,000+ per user/month after crores in customisation. Zoho is cheaper but still overkill for a 3–6 person sales team.</p>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">👤</div>
+        <h4>Prospect Data Walks Out the Door</h4>
+        <p>When a salesperson resigns, their entire prospect history disappears. No records, no context, no continuity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <div class="section-head">
+      <div class="label light">The Solution</div>
+      <h2 style="color:#fff;">What Sales Meta Does</h2>
+      <div class="vio-line"></div>
+      <p>A procedural, selection-based coaching layer that runs live during a meeting — guiding without recording, structured without AI overhead.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card">
+        <div class="s-icon">🌳</div>
+        <h4>Question Tree Engine</h4>
+        <p>Hierarchical question flows built on SPIN methodology. Each response branches to the next right question — keeping the salesperson on track.</p>
+      </div>
+      <div class="sol-card">
+        <div class="s-icon">📱</div>
+        <h4>Live Meeting Interface</h4>
+        <p>Tap-to-select responses during the meeting. No typing in front of the client. Visual progress through 4 structured stages.</p>
+      </div>
+      <div class="sol-card">
+        <div class="s-icon">📡</div>
+        <h4>Full Offline Mode</h4>
+        <p>Pre-download question trees before heading into the field. Works in factory floors, shadow areas, remote locations. Auto-syncs when back online.</p>
+      </div>
+      <div class="sol-card">
+        <div class="s-icon">📊</div>
+        <h4>Auto-Generated Reports</h4>
+        <p>Click "End Meeting" — a structured report is instantly generated and sent to the manager. No manual input, no fabricated summaries.</p>
+      </div>
+      <div class="sol-card">
+        <div class="s-icon">🏢</div>
+        <h4>Multi-Tenant SaaS</h4>
+        <p>One platform, many clients. Each tenant gets full data isolation, their own question trees, users, and configuration panel.</p>
+      </div>
+      <div class="sol-card">
+        <div class="s-icon">🧭</div>
+        <h4>Contextual Mentoring</h4>
+        <p>Based on which response is selected, the app can surface inline coaching tips — surfacing Rakesh's methodology at exactly the right moment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ MEETING FLOW -->
+<section class="flow-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">How a Meeting Works</div>
+      <h2>The Salesperson's Flow</h2>
+      <div class="vio-line"></div>
+      <p>Simple enough to use mid-conversation. Structured enough to transform outcomes.</p>
+    </div>
+    <div class="flow-wrap">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <h4>Launch App</h4>
+        <p>Open Sales Meta, enter prospect details, select scenario</p>
+        <span class="flow-tag tag-v">Pre-Meeting</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <h4>Select Scenario</h4>
+        <p>Choose Cold Call, Follow-up, Renewal — loads the right tree</p>
+        <span class="flow-tag tag-v">Situation</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <h4>Navigate Tree</h4>
+        <p>Questions appear one at a time. Tap the client's response. Branch automatically.</p>
+        <span class="flow-tag tag-o">Live Meeting</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <h4>Mentoring Cues</h4>
+        <p>Based on selected path, contextual tips appear to guide the conversation</p>
+        <span class="flow-tag tag-o">SPIN Coaching</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <h4>End Meeting</h4>
+        <p>Tap End — report auto-generated with score, path, and all responses</p>
+        <span class="flow-tag tag-v">Report</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">06</div>
+        <h4>Auto Sync</h4>
+        <p>Session data syncs to the server. Manager sees the report instantly.</p>
+        <span class="flow-tag tag-v">Post-Meeting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ SCOPE -->
+<section class="scope">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">Scope of Work</div>
+      <h2>What We're Building</h2>
+      <div class="vio-line"></div>
+      <p>Full-stack delivery across mobile, backend, admin panel, and infrastructure.</p>
+    </div>
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">🏗️</div>
+          <h4>Tenant Management</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Tenant onboarding and registration (Super Admin)</li>
+          <li>Tenant-level settings and configuration</li>
+          <li>Full data isolation per tenant</li>
+          <li>Subscription and plan management per tenant</li>
+          <li>Super Admin platform-wide dashboard</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">🔐</div>
+          <h4>Auth & User Management</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Role-based login: Super Admin, Tenant Admin, Salesperson</li>
+          <li>Salesperson creation and management by Tenant Admin</li>
+          <li>JWT-based auth with refresh token support</li>
+          <li>Password reset flow</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">🌳</div>
+          <h4>Question Tree Engine</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Tree-based hierarchical question and response builder</li>
+          <li>Branching logic per response (leads to next question)</li>
+          <li>Multiple question trees per tenant</li>
+          <li>Draft and publish states per tree</li>
+          <li>Support for 4-level SPIN structure (S/P/I/N)</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">🎬</div>
+          <h4>Scenario Management</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Create and manage named sales scenarios</li>
+          <li>Assign question trees to scenarios</li>
+          <li>Assign scenarios to salespeople or teams</li>
+          <li>Example: Cold Call, Follow-up, Renewal</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">📱</div>
+          <h4>Live Meeting Interface (Mobile)</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Start meeting with client/prospect details</li>
+          <li>Select scenario before meeting begins</li>
+          <li>Tree-based Q&amp;A navigation during meeting</li>
+          <li>Tap to select current question and client response</li>
+          <li>Visual progress indicator showing meeting stage</li>
+          <li>Contextual guidance (mentoring mode)</li>
+          <li>No audio recording — selection-based input only</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">📡</div>
+          <h4>Offline Mode</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Pre-download full session question tree before meeting</li>
+          <li>Full functionality without internet during active meeting</li>
+          <li>Auto-sync session data when connectivity restored</li>
+          <li>Conflict resolution on sync</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">📊</div>
+          <h4>Post-Meeting Reporting</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Auto-generate report on session close</li>
+          <li>Captures questions asked, responses selected, path taken</li>
+          <li>Meeting score generated based on response patterns</li>
+          <li>Accessible to Tenant Admin across all salespeople</li>
+          <li>Prospect data retained independently of salesperson status</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">⚙️</div>
+          <h4>Admin Configuration Panel (Web)</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Question builder with branching logic</li>
+          <li>Manage question trees and scenarios</li>
+          <li>Assign scenarios to users and teams</li>
+          <li>View and filter meeting reports</li>
+          <li>Manage prospects and client records</li>
+          <li>Manage users within the tenant</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">👤</div>
+          <h4>Prospects Management</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Create and manage prospect records</li>
+          <li>View full meeting history per prospect</li>
+          <li>Data persists even when associated salesperson is deactivated</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">📚</div>
+          <h4>Content &amp; Resources</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Upload and manage reference material per tenant (PDFs, text)</li>
+          <li>Contextual tips surfaced during meeting based on selected path</li>
+          <li>Author's book content accessible in-app chapter-wise</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">🔔</div>
+          <h4>Notifications</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Push notifications to salespeople (session reminders)</li>
+          <li>In-app and email to Tenant Admin (new reports available)</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <div class="scope-icon">🎛️</div>
+          <h4>Super Admin Panel</h4>
+        </div>
+        <ul class="scope-list">
+          <li>Create, view, suspend, and restore tenants</li>
+          <li>Platform-wide usage and activity dashboard</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="out-of-scope">
+      <div class="oos-card">
+        <h4>⛔ Out of Scope (this phase)</h4>
+        <ul class="oos-list">
+          <li>AI or machine learning features in the live application</li>
+          <li>Real-time AI analysis during meetings</li>
+          <li>Audio or video recording</li>
+          <li>CRM integrations (Salesforce, Zoho, etc.)</li>
+          <li>Native desktop application</li>
+          <li>Custom white-labelling per tenant</li>
+          <li>Payment gateway integration (future phase)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ TECH STACK -->
+<section class="tech">
+  <div class="container">
+    <div class="section-head">
+      <div class="label light">Technical Architecture</div>
+      <h2 style="color:#fff;">Technology Stack</h2>
+      <div class="vio-line"></div>
+      <p>Production-grade, cloud-native stack chosen for reliability, offline performance, and scalability.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-icon">📱</div>
+        <div>
+          <div class="t-layer">Mobile App</div>
+          <div class="t-name">Flutter</div>
+          <div class="t-desc">iOS &amp; Android · Smooth UI</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">💾</div>
+        <div>
+          <div class="t-layer">Offline Storage</div>
+          <div class="t-name">SQLite / Drift</div>
+          <div class="t-desc">Local persistence on device</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">⚡</div>
+        <div>
+          <div class="t-layer">Backend</div>
+          <div class="t-name">NestJS + Fastify</div>
+          <div class="t-desc">Node.js · REST API</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🗄️</div>
+        <div>
+          <div class="t-layer">Database</div>
+          <div class="t-name">PostgreSQL</div>
+          <div class="t-desc">Prisma ORM · Migrations</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">⚡</div>
+        <div>
+          <div class="t-layer">Caching</div>
+          <div class="t-name">Redis</div>
+          <div class="t-desc">via cache-manager</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🔄</div>
+        <div>
+          <div class="t-layer">Job Queues</div>
+          <div class="t-name">Bull</div>
+          <div class="t-desc">Redis-backed async jobs</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">☁️</div>
+        <div>
+          <div class="t-layer">File Storage</div>
+          <div class="t-name">AWS S3</div>
+          <div class="t-desc">PDFs, references, assets</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🔔</div>
+        <div>
+          <div class="t-layer">Push Notifications</div>
+          <div class="t-name">Firebase FCM</div>
+          <div class="t-desc">iOS &amp; Android push</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🔐</div>
+        <div>
+          <div class="t-layer">Authentication</div>
+          <div class="t-name">JWT</div>
+          <div class="t-desc">Access + refresh tokens</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🌐</div>
+        <div>
+          <div class="t-layer">Hosting</div>
+          <div class="t-name">AWS Cloud</div>
+          <div class="t-desc">Provider TBD with client</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ PHASES -->
+<section class="phases">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">Delivery Plan</div>
+      <h2>Two Packages. Two Timelines.</h2>
+      <div class="vio-line"></div>
+      <p>Pick the package, know exactly when you launch. Both timelines begin after NDA sign-off and initial payment.</p>
+    </div>
+
+    <!-- TIMELINE SELECTOR VISUAL -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:48px;">
+      <div style="background:var(--orange-lt);border:2px solid var(--orange);border-radius:20px;padding:28px 30px;">
+        <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange2);margin-bottom:10px;">₹2 Lakh — MVP</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:52px;font-weight:900;color:var(--orange);line-height:1;">4</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:var(--orange2);margin-bottom:10px;">Weeks to Launch</div>
+        <p style="font-size:13px;">Core app live. Meeting flow, offline mode, reports — ready for first paying clients.</p>
+      </div>
+      <div style="background:linear-gradient(135deg,var(--dark),#140d2e);border:2px solid rgba(108,71,255,0.4);border-radius:20px;padding:28px 30px;">
+        <div style="font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#a78bfa;margin-bottom:10px;">₹5 Lakh — Full Platform</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:52px;font-weight:900;color:#a78bfa;line-height:1;">10</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#c4b5fd;margin-bottom:10px;">Weeks to Full Platform</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);">Complete multi-tenant SaaS. Every feature built, tested, and deployed.</p>
+      </div>
+    </div>
+
+    <!-- SECTION A LABEL -->
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;">
+      <div style="background:var(--orange);color:#fff;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 16px;border-radius:99px;">₹2L MVP · 4 Weeks</div>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
+
+    <!-- Week Timeline Strip -->
+    <div class="sprint-timeline">
+      <div class="sprint-tl-item">
+        <div class="wk-label">Week 1</div>
+        <div class="wk-title">Foundation</div>
+        <div class="sprint-tl-bar bar-w1"></div>
+      </div>
+      <div class="sprint-tl-item">
+        <div class="wk-label">Week 2</div>
+        <div class="wk-title">Question Engine</div>
+        <div class="sprint-tl-bar bar-w2"></div>
+      </div>
+      <div class="sprint-tl-item">
+        <div class="wk-label">Week 3</div>
+        <div class="wk-title">Mobile App</div>
+        <div class="sprint-tl-bar bar-w3"></div>
+      </div>
+      <div class="sprint-tl-item">
+        <div class="wk-label">Week 4</div>
+        <div class="wk-title">Reports · QA · Launch</div>
+        <div class="sprint-tl-bar bar-w4"></div>
+      </div>
+    </div>
+
+    <!-- 4 Week Cards -->
+    <div class="sprint-grid">
+
+      <!-- WEEK 1 -->
+      <div class="sprint-card">
+        <div class="sprint-card-head">
+          <div class="sprint-wk-num">01</div>
+          <div class="sprint-card-head-right">
+            <span class="wk-tag tag-w1">Week 1</span>
+            <h4>Discovery, Design &amp; Backend Foundation</h4>
+            <p>Architecture locked. Core backend live by end of week.</p>
+          </div>
+        </div>
+        <div class="sprint-days">
+          <div class="sprint-day">
+            <span class="day-label">Day 1–2</span>
+            <div class="sprint-day-tasks">
+              <span>Finalise feature list, wireframes &amp; UI flows</span>
+              <span>DB schema design — users, tenants, trees, sessions</span>
+              <span>REST API contract documentation</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label">Day 3–4</span>
+            <div class="sprint-day-tasks">
+              <span>NestJS project setup with Fastify adapter</span>
+              <span>PostgreSQL + Prisma schema + initial migrations</span>
+              <span>JWT auth — login, refresh token, password reset</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label">Day 5</span>
+            <div class="sprint-day-tasks">
+              <span>Role-based access control — Tenant Admin, Salesperson</span>
+              <span>User management APIs (CRUD, deactivate)</span>
+              <span>Internal review + client demo of API structure</span>
+            </div>
+          </div>
+        </div>
+        <div class="sprint-deliverable">
+          <span class="del-icon">✅</span>
+          <p>Deliverable: Backend running in staging. Auth + user APIs tested.</p>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div class="sprint-card">
+        <div class="sprint-card-head">
+          <div class="sprint-wk-num">02</div>
+          <div class="sprint-card-head-right">
+            <span class="wk-tag tag-w2">Week 2</span>
+            <h4>Question Tree Engine &amp; Admin Panel</h4>
+            <p>Core product logic built. Admin can configure trees by Friday.</p>
+          </div>
+        </div>
+        <div class="sprint-days">
+          <div class="sprint-day">
+            <span class="day-label purple">Day 1–2</span>
+            <div class="sprint-day-tasks">
+              <span>Question tree data model — nodes, branches, responses</span>
+              <span>Tree builder API — create, update, delete nodes</span>
+              <span>Draft / publish state per tree</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label purple">Day 3</span>
+            <div class="sprint-day-tasks">
+              <span>Branching logic engine — response → next question resolution</span>
+              <span>SPIN 4-level structure (Situation / Problem / Implication / Need-Payoff)</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label purple">Day 4–5</span>
+            <div class="sprint-day-tasks">
+              <span>Scenario management — create scenarios, assign trees</span>
+              <span>Assign scenarios to salespeople</span>
+              <span>Basic admin web panel — question builder UI, user management</span>
+            </div>
+          </div>
+        </div>
+        <div class="sprint-deliverable">
+          <span class="del-icon">✅</span>
+          <p>Deliverable: Admin can build a full question tree &amp; assign it to a salesperson.</p>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div class="sprint-card">
+        <div class="sprint-card-head">
+          <div class="sprint-wk-num">03</div>
+          <div class="sprint-card-head-right">
+            <span class="wk-tag tag-w3">Week 3</span>
+            <h4>Flutter Mobile App &amp; Offline Mode</h4>
+            <p>Salesperson can run a full meeting end-to-end on the phone.</p>
+          </div>
+        </div>
+        <div class="sprint-days">
+          <div class="sprint-day">
+            <span class="day-label orange">Day 1</span>
+            <div class="sprint-day-tasks">
+              <span>Flutter project setup — iOS &amp; Android targets</span>
+              <span>Auth screens — login, session management</span>
+              <span>Prospect creation + meeting start flow</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label orange">Day 2–3</span>
+            <div class="sprint-day-tasks">
+              <span>Live meeting interface — tap-to-select question navigation</span>
+              <span>Tree traversal engine on device</span>
+              <span>Visual stage progress indicator (4 SPIN stages)</span>
+              <span>Skip question &amp; back navigation</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label orange">Day 4–5</span>
+            <div class="sprint-day-tasks">
+              <span>SQLite / Drift offline storage setup</span>
+              <span>Pre-download full question tree before meeting</span>
+              <span>Auto-sync session data when connectivity restored</span>
+            </div>
+          </div>
+        </div>
+        <div class="sprint-deliverable">
+          <span class="del-icon">✅</span>
+          <p>Deliverable: Full meeting flow working on phone — online and offline.</p>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div class="sprint-card">
+        <div class="sprint-card-head">
+          <div class="sprint-wk-num">04</div>
+          <div class="sprint-card-head-right">
+            <span class="wk-tag tag-w4">Week 4</span>
+            <h4>Reports, QA &amp; Deployment</h4>
+            <p>App shipped. Reports auto-generating. Source code handed over.</p>
+          </div>
+        </div>
+        <div class="sprint-days">
+          <div class="sprint-day">
+            <span class="day-label orange">Day 1</span>
+            <div class="sprint-day-tasks">
+              <span>Auto-generate post-meeting report on "End Meeting"</span>
+              <span>Meeting score calculation based on response path</span>
+              <span>Report view for Tenant Admin — all salespeople</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label orange">Day 2</span>
+            <div class="sprint-day-tasks">
+              <span>Prospects management — full history per prospect</span>
+              <span>Data retention when salesperson account deactivated</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label orange">Day 3–4</span>
+            <div class="sprint-day-tasks">
+              <span>End-to-end QA — full meeting loop, offline sync, report generation</span>
+              <span>Bug fixes + edge case handling</span>
+              <span>Client UAT (User Acceptance Testing) session</span>
+            </div>
+          </div>
+          <div class="sprint-day">
+            <span class="day-label orange">Day 5</span>
+            <div class="sprint-day-tasks">
+              <span>Cloud deployment — backend + admin panel live</span>
+              <span>Mobile app builds (APK + iOS) handed to client</span>
+              <span>Full source code handover via Git repository</span>
+            </div>
+          </div>
+        </div>
+        <div class="sprint-deliverable">
+          <span class="del-icon">🚀</span>
+          <p>Deliverable: MVP live in production. Source code handed over. Ready for first client.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Total Bar -->
+    <div class="sprint-total-bar">
+      <div>
+        <h3>MVP Ready in 4 Weeks</h3>
+        <p>₹2L package · Post NDA sign-off · Parallel dev tracks across backend, mobile &amp; admin</p>
+      </div>
+      <div style="text-align:right">
+        <div class="sprint-dur">4 Weeks</div>
+        <div class="sprint-dur-label">₹2L MVP Package</div>
+      </div>
+    </div>
+
+    <!-- ══ 10-WEEK FULL PLATFORM ══ -->
+    <div style="display:flex;align-items:center;gap:14px;margin:56px 0 28px;">
+      <div style="background:var(--violet);color:#fff;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:6px 16px;border-radius:99px;">₹5L Full Platform · 10 Weeks</div>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
+
+    <!-- 10-week horizontal timeline bar -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:28px;">
+      <div style="display:grid;grid-template-columns:repeat(10,1fr);">
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 1</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Discovery &amp; Design</div>
+          <div style="height:3px;background:var(--violet);border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 2</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Backend &amp; Auth</div>
+          <div style="height:3px;background:#7c5bff;border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 3</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Question Tree Engine</div>
+          <div style="height:3px;background:#8e6aff;border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 4</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Scenarios &amp; Admin Panel</div>
+          <div style="height:3px;background:#9f6bff;border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 5</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Flutter Mobile App</div>
+          <div style="height:3px;background:#b06bef;border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 6</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Offline Mode &amp; Sync</div>
+          <div style="height:3px;background:#c06bdf;border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 7</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Multi-Tenant &amp; Super Admin</div>
+          <div style="height:3px;background:#d06bcf;border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 8</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Reports, Notifications &amp; Content</div>
+          <div style="height:3px;background:#e06baf;border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;border-right:1px solid var(--border);text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 9</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Mentoring, Analytics &amp; QA</div>
+          <div style="height:3px;background:#ef6b80;border-radius:0;margin-top:8px;"></div>
+        </div>
+        <div style="padding:12px 10px;text-align:center;">
+          <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;">Wk 10</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text);line-height:1.3;">Deploy &amp; Handover</div>
+          <div style="height:3px;background:var(--orange);border-radius:0;margin-top:8px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10-week detail cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+        <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--violet);margin-bottom:10px;">Weeks 1–4 · Foundation</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:var(--violet);font-weight:700;flex-shrink:0;">W1</span>Discovery, wireframes, DB schema, API contracts</li>
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:var(--violet);font-weight:700;flex-shrink:0;">W2</span>NestJS backend, PostgreSQL, JWT auth, user roles, multi-tenant DB structure</li>
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:var(--violet);font-weight:700;flex-shrink:0;">W3</span>Question tree engine, branching logic, SPIN 4-level structure, draft/publish states</li>
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:var(--violet);font-weight:700;flex-shrink:0;">W4</span>Scenario management, user assignment, admin panel (question builder + user management)</li>
+        </ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+        <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#9f6bff;margin-bottom:10px;">Weeks 5–7 · Mobile &amp; Platform</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:#9f6bff;font-weight:700;flex-shrink:0;">W5</span>Flutter app — auth, meeting start, live tree navigation, prospect details, progress indicator</li>
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:#9f6bff;font-weight:700;flex-shrink:0;">W6</span>Offline mode (SQLite/Drift), pre-download trees, auto-sync on reconnect, conflict resolution</li>
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:#9f6bff;font-weight:700;flex-shrink:0;">W7</span>Full multi-tenant isolation, Super Admin panel, tenant onboarding, subscription management</li>
+        </ul>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;">
+        <div style="font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange2);margin-bottom:10px;">Weeks 8–10 · Polish &amp; Launch</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:var(--orange);font-weight:700;flex-shrink:0;">W8</span>Advanced reports + analytics dashboard, push notifications (FCM), email alerts, AWS S3 content module</li>
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:var(--orange);font-weight:700;flex-shrink:0;">W9</span>Contextual mentoring, in-app book, date/time/location stamping, full QA, UAT with client</li>
+          <li style="display:flex;gap:10px;font-size:14px;color:var(--muted);"><span style="color:var(--orange);font-weight:700;flex-shrink:0;">W10</span>CI/CD pipeline, cloud deployment, Swagger API docs, full source code handover via Git</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sprint-total-bar" style="margin-top:20px;">
+      <div>
+        <h3>Full Platform Ready in 10 Weeks</h3>
+        <p>₹5L package · Multi-tenant SaaS · Every feature built, tested &amp; deployed</p>
+      </div>
+      <div style="text-align:right">
+        <div class="sprint-dur">10 Weeks</div>
+        <div class="sprint-dur-label">₹5L Full Platform Package</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ DELIVERABLES -->
+<section class="deliverables">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">Deliverables</div>
+      <h2>What You Receive</h2>
+      <div class="vio-line"></div>
+      <p>Every deliverable is production-ready and handed over fully.</p>
+    </div>
+    <div class="del-grid">
+      <div class="del-card">
+        <div class="del-num">01</div>
+        <h4>Flutter Mobile App</h4>
+        <p>iOS &amp; Android builds with full offline support, signed and ready for store submission</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">02</div>
+        <h4>Backend REST API</h4>
+        <p>NestJS API with full multi-tenant architecture, authentication, and business logic</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">03</div>
+        <h4>Admin Web Panel</h4>
+        <p>Tenant Admin dashboard for question tree configuration, reporting, and user management</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">04</div>
+        <h4>Super Admin Panel</h4>
+        <p>Platform-level tenant management, suspension, and activity monitoring</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">05</div>
+        <h4>Database Schema</h4>
+        <p>PostgreSQL schema with full Prisma migrations — version-controlled and documented</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">06</div>
+        <h4>API Documentation</h4>
+        <p>Full Swagger/OpenAPI endpoint reference for every exposed API</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">07</div>
+        <h4>Deployment Setup</h4>
+        <p>Cloud infrastructure configured with environment configs, CI/CD pipeline</p>
+      </div>
+      <div class="del-card">
+        <div class="del-num">08</div>
+        <h4>Full Source Code</h4>
+        <p>Complete codebase handed over via private Git repository — you own it fully</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ COMMERCIAL -->
+<section class="commercial">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">Investment Packages</div>
+      <h2>Choose Your Launch Path</h2>
+      <div class="vio-line"></div>
+      <p>Two clearly defined packages. Start lean and validate the market, or go full-platform from day one.</p>
+    </div>
+
+    <div class="pkg-grid">
+
+      <!-- PACKAGE 1 -->
+      <div class="pkg-card pkg-basic">
+        <div class="pkg-badge badge-basic">🚀 Launch Package</div>
+        <h3>MVP — Launch Ready</h3>
+        <p class="pkg-tagline">Everything needed to get Sales Meta in the hands of your first customers and start generating ₹500/user/month revenue.</p>
+        <div class="pkg-price">₹2,00,000</div>
+        <p class="pkg-price-note">Fixed price · <strong style="color:var(--orange2);">4 weeks to launch</strong> · Equity + payment model applies</p>
+
+        <div class="pkg-divider"></div>
+        <div class="pkg-section-label">Core Features Included</div>
+        <ul class="pkg-features">
+          <li><span class="pkg-check check-basic">✓</span>Flutter mobile app — iOS &amp; Android (offline-first)</li>
+          <li><span class="pkg-check check-basic">✓</span>Question Tree Engine — tree builder with branching logic</li>
+          <li><span class="pkg-check check-basic">✓</span>SPIN-based 4-level structure (S/P/I/N)</li>
+          <li><span class="pkg-check check-basic">✓</span>Scenario management — create, assign, navigate</li>
+          <li><span class="pkg-check check-basic">✓</span>Live meeting interface — tap-to-select, progress indicator</li>
+          <li><span class="pkg-check check-basic">✓</span>Full offline mode — pre-download + auto-sync on reconnect</li>
+          <li><span class="pkg-check check-basic">✓</span>Auto-generated post-meeting report with meeting score</li>
+          <li><span class="pkg-check check-basic">✓</span>Basic Admin web panel — question builder, user management</li>
+          <li><span class="pkg-check check-basic">✓</span>Prospects management — records + meeting history</li>
+          <li><span class="pkg-check check-basic">✓</span>Role-based auth — Tenant Admin + Salesperson</li>
+          <li><span class="pkg-check check-basic">✓</span>Single tenant support (your business)</li>
+          <li><span class="pkg-check check-basic">✓</span>PostgreSQL database + REST API backend</li>
+          <li><span class="pkg-check check-basic">✓</span>Cloud deployment + source code handover</li>
+        </ul>
+
+        <div class="pkg-add">
+          <p>⚡ <strong>Best for:</strong> Validating the concept with your first 5–10 clients. Full core loop working — salesperson takes a meeting, app guides them, report auto-generates. No frills, zero compromise on the essentials.</p>
+        </div>
+      </div>
+
+      <!-- PACKAGE 2 -->
+      <div class="pkg-card pkg-full">
+        <div class="pkg-popular">Recommended</div>
+        <div class="pkg-badge badge-full">🏆 Full Platform</div>
+        <h3>Complete Sales Meta</h3>
+        <p class="pkg-tagline">The full multi-tenant SaaS platform — built to onboard dozens of business clients, each with their own question trees, teams, and reporting.</p>
+        <div class="pkg-price">₹5,00,000</div>
+        <p class="pkg-price-note">Fixed price · <strong style="color:#c4b5fd;">10 weeks to full platform</strong> · Equity + payment model applies</p>
+
+        <div class="pkg-divider"></div>
+        <div class="pkg-section-label">Everything in ₹2L, plus</div>
+        <ul class="pkg-features">
+          <li><span class="pkg-check check-full">✓</span>Full multi-tenant architecture — unlimited clients, complete data isolation</li>
+          <li><span class="pkg-check check-full">✓</span>Super Admin panel — onboard, suspend, monitor all tenants</li>
+          <li><span class="pkg-check check-full">✓</span>Tenant subscription &amp; plan management</li>
+          <li><span class="pkg-check check-full">✓</span>Contextual mentoring — inline coaching tips during live meeting</li>
+          <li><span class="pkg-check check-full">✓</span>Content &amp; resources module — PDFs, reference material, in-app book (chapter-wise)</li>
+          <li><span class="pkg-check check-full">✓</span>Push notifications — session reminders (FCM) + email alerts to admin</li>
+          <li><span class="pkg-check check-full">✓</span>Advanced reporting dashboard — filter by user, date, scenario, prospect</li>
+          <li><span class="pkg-check check-full">✓</span>AWS S3 file storage for tenant content</li>
+          <li><span class="pkg-check check-full">✓</span>Redis caching + Bull job queues for production-grade performance</li>
+          <li><span class="pkg-check check-full">✓</span>Full API documentation (Swagger/OpenAPI)</li>
+          <li><span class="pkg-check check-full">✓</span>CI/CD pipeline + automated deployment setup</li>
+          <li><span class="pkg-check check-full">✓</span>Date/time/location stamping per question-answer interaction</li>
+          <li><span class="pkg-check check-full">✓</span>Advanced conflict resolution on offline sync</li>
+        </ul>
+
+        <div class="pkg-add add-full">
+          <p>🏢 <strong>Best for:</strong> Building Sales Meta as a commercial SaaS product — ready to acquire multiple business clients from day one, each running independently on the same platform.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div class="pkg-compare">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>₹2L — MVP</th>
+            <th>₹5L — Full Platform</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Flutter mobile app (iOS + Android)</td><td><span class="chk-y">✓</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Question Tree Engine + SPIN structure</td><td><span class="chk-y">✓</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Live meeting interface (offline-first)</td><td><span class="chk-y">✓</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Auto-generated post-meeting report</td><td><span class="chk-y">✓</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Prospects management</td><td><span class="chk-y">✓</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Admin web panel</td><td><span class="chk-p">Basic</span></td><td><span class="chk-y">✓ Full</span></td></tr>
+          <tr><td>Multi-tenant architecture</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Super Admin panel</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Contextual in-meeting mentoring</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>In-app book / content resources</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Push + email notifications</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Advanced analytics dashboard</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>AWS S3, Redis, Bull queues</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Location + timestamp per interaction</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Full API documentation</td><td><span class="chk-n">—</span></td><td><span class="chk-y">✓</span></td></tr>
+          <tr><td>Delivery timeline</td><td><strong>4 weeks</strong></td><td><strong>10 weeks</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ADDON INFO -->
+    <div class="comm-addon">
+      <div class="comm-card" style="padding:28px;">
+        <h3 style="font-size:18px;margin-bottom:12px;">Third-Party Costs</h3>
+        <p style="font-size:14px;margin-bottom:16px;">Not included in either package — billed to client directly or passed at cost:</p>
+        <table class="comm-table">
+          <tr><td>AWS (S3, hosting)</td><td>Billed at cost</td></tr>
+          <tr><td>Firebase (FCM)</td><td>Usage-based</td></tr>
+          <tr><td>Redis hosting</td><td>Usage-based</td></tr>
+          <tr><td>Domain &amp; SSL</td><td>Client account</td></tr>
+          <tr><td>App Store / Play Store fees</td><td>Client account</td></tr>
+        </table>
+      </div>
+      <div class="comm-card" style="padding:28px;">
+        <h3 style="font-size:18px;margin-bottom:12px;">SaaS Pricing for Your Clients</h3>
+        <p style="font-size:14px;margin-bottom:16px;">What Rakesh's customers pay to use the platform:</p>
+        <div style="background:var(--violet-lt);border-radius:12px;padding:18px 20px;margin-bottom:16px;">
+          <div style="font-family:'Outfit',sans-serif;font-size:32px;font-weight:900;color:var(--violet2);">₹500
+            <span style="font-size:15px;font-weight:500;color:var(--muted)"> / user / month</span>
+          </div>
+          <p style="font-size:13px;margin-top:4px;">Per tenant. Well below Salesforce (₹3,000+) and Zoho.</p>
+        </div>
+        <div class="equity-badge" style="font-size:12px;">🤝 &nbsp;Equity + Payment hybrid — terms in Partnership Agreement</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ROLES -->
+<section class="roles">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">Roles &amp; Responsibilities</div>
+      <h2>Who Does What</h2>
+      <div class="vio-line"></div>
+    </div>
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-header">
+          <div class="role-avatar tts">🏗️</div>
+          <div>
+            <h4>Think To Share</h4>
+            <div class="role-sub">Technical Partner (CTO Role)</div>
+          </div>
+        </div>
+        <ul class="role-list">
+          <li><span class="dot tts-dot"></span>Full-stack development — backend, mobile, admin panel</li>
+          <li><span class="dot tts-dot"></span>Technical architecture and infrastructure setup</li>
+          <li><span class="dot tts-dot"></span>API design and documentation</li>
+          <li><span class="dot tts-dot"></span>QA and bug fixes within agreed scope</li>
+          <li><span class="dot tts-dot"></span>Cloud deployment and DevOps</li>
+          <li><span class="dot tts-dot"></span>Post-launch support (duration TBD)</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-header">
+          <div class="role-avatar client">🎯</div>
+          <div>
+            <h4>Rakesh — Dottedline</h4>
+            <div class="role-sub">Product Owner &amp; Domain Expert</div>
+          </div>
+        </div>
+        <ul class="role-list">
+          <li><span class="dot client-dot"></span>Provide detailed feature list and question tree logic</li>
+          <li><span class="dot client-dot"></span>Review and approve designs at each phase (within 3 business days)</li>
+          <li><span class="dot client-dot"></span>Provide the SPIN-based question content and scoring logic</li>
+          <li><span class="dot client-dot"></span>Manage content population for the first tenant</li>
+          <li><span class="dot client-dot"></span>Coordinate third-party accounts (Firebase, AWS, etc.)</li>
+          <li><span class="dot client-dot"></span>Sign NDA before project commencement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ASSUMPTIONS -->
+<section class="assumptions">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">Assumptions</div>
+      <h2>Important Conditions</h2>
+      <div class="vio-line"></div>
+    </div>
+    <div class="assum-grid">
+      <div class="assum-item">
+        <div class="assum-num">01</div>
+        <p>Client provides question content, branching logic, and sales methodology inputs required to populate the first tenant's question trees.</p>
+      </div>
+      <div class="assum-item">
+        <div class="assum-num">02</div>
+        <p>Client will provide or approve wireframes and UI feedback within 3 business days of each design review.</p>
+      </div>
+      <div class="assum-item">
+        <div class="assum-num">03</div>
+        <p>Hosting and domain costs are separate from this SOW. Billed to client directly or passed through at cost.</p>
+      </div>
+      <div class="assum-item">
+        <div class="assum-num">04</div>
+        <p>Third-party service costs (AWS S3, Firebase, Redis hosting) are not included in the development fee.</p>
+      </div>
+      <div class="assum-item">
+        <div class="assum-num">05</div>
+        <p>Project begins only after NDA is signed and initial payment is received as per agreed payment schedule.</p>
+      </div>
+      <div class="assum-item">
+        <div class="assum-num">06</div>
+        <p>Scoring logic and proprietary methodology inputs will be provided by Rakesh and will not be reverse-engineered or disclosed.</p>
+      </div>
+      <div class="assum-item" style="border: 1px solid #ffddd2; background: #fff8f6;">
+        <div class="assum-num" style="color:#ffd0bc;">07</div>
+        <p><strong style="color:var(--text);">App Store &amp; Play Store review</strong> is managed independently by Apple and Google and falls outside the scope of this engagement. We build fully to platform guidelines — however, both stores conduct their own review process, and occasionally a novel application category may prompt a reviewer to request specific adjustments before approval. Should any such changes be needed, the additional development effort will be scoped and quoted separately. This is not a common scenario, but given that Sales Meta is a first-of-its-kind tool in its category, it is prudent to acknowledge this as a possibility at the outset.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ ACCEPTANCE CRITERIA -->
+<section style="padding: 80px 0; background: #fff;">
+  <div class="container">
+    <div class="section-head">
+      <div class="label">Acceptance Criteria</div>
+      <h2>Definition of Done</h2>
+      <div class="vio-line"></div>
+      <p>Each phase deliverable is accepted when all of the following conditions are met.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
+      <div style="background:var(--violet-pale);border:1px solid var(--border);border-radius:16px;padding:24px;border-top:4px solid var(--violet);">
+        <div style="font-size:28px;margin-bottom:12px;">✅</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">Features Functional</h4>
+        <p style="font-size:14px;">All features defined in the phase are functional and tested against the agreed specification.</p>
+      </div>
+      <div style="background:var(--violet-pale);border:1px solid var(--border);border-radius:16px;padding:24px;border-top:4px solid var(--violet);">
+        <div style="font-size:28px;margin-bottom:12px;">📝</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">Written Approval</h4>
+        <p style="font-size:14px;">Client has reviewed and provided written approval (email is acceptable) for that phase.</p>
+      </div>
+      <div style="background:var(--violet-pale);border:1px solid var(--border);border-radius:16px;padding:24px;border-top:4px solid var(--violet);">
+        <div style="font-size:28px;margin-bottom:12px;">🐛</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">No Critical Bugs</h4>
+        <p style="font-size:14px;">No critical or high-severity bugs remain open at the time of acceptance.</p>
+      </div>
+      <div style="background:var(--violet-pale);border:1px solid var(--border);border-radius:16px;padding:24px;border-top:4px solid var(--violet);">
+        <div style="font-size:28px;margin-bottom:12px;">📖</div>
+        <h4 style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">API Documented</h4>
+        <p style="font-size:14px;">API documentation reflects all delivered endpoints accurately in Swagger/OpenAPI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ NDA CTA -->
+<section class="nda-cta">
+  <div class="nda-glow"></div>
+  <div class="container">
+    <div class="nda-inner">
+      <div class="label light" style="text-align:center;margin-bottom:16px;">Next Steps</div>
+      <h2>Ready to Build Sales Meta?</h2>
+      <p>Three clear steps to get started. The sooner the NDA is in place, the sooner we can begin detailed scoping and wireframes.</p>
+      <div class="nda-steps">
+        <div class="nda-step">
+          <div class="ns-num">01</div>
+          <p>Review this proposal and share feedback</p>
+        </div>
+        <div class="nda-step">
+          <div class="ns-num">02</div>
+          <p>Sign NDA to enable proprietary detail sharing</p>
+        </div>
+        <div class="nda-step">
+          <div class="ns-num">03</div>
+          <p>Agree payment + equity terms &amp; kick off Phase 1</p>
+        </div>
+      </div>
+      <div class="btn-wrap">
+        <a href="mailto:parag@thinktoshare.com?subject=Sales Meta - NDA Ready&body=Hi Parag, I've reviewed the proposal and I'm ready to proceed with signing the NDA." class="btn-primary">
+          ✉️ &nbsp;Let's Sign the NDA
+        </a>
+        <a href="mailto:parag@thinktoshare.com?subject=Sales Meta - Proposal Query" class="btn-secondary">
+          Ask a Question
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Think To <span>Share</span></div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:4px;">IT Solutions Pvt. Ltd &nbsp;·&nbsp; parag@thinktoshare.com</div>
+      </div>
+      <div class="confidential">Confidential</div>
+      <div class="footer-meta">
+        Sales Meta — SOW v1.0 Draft<br>
+        Prepared for Rakesh · Dottedline.co.in<br>
+        June 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
